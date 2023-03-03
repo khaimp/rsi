@@ -1,0 +1,1 @@
+@keyframes price-change{0%{background-color:#4caf50}to{background-color:#000}}.changed{animation-name:price-change;animation-duration:2s}.normal{color:#fff}.color-red{color:#f44336}.color-green{color:#4caf50}.color-favorite,.color-orange{color:#ff9800}
