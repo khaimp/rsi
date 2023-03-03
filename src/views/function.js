@@ -125,3 +125,17 @@ export function debounce(func, wait, immediate) {
     if (callNow) func.apply(context, args);
   };
 }
+export function getRealValue(number) {
+  if (Math.abs(number) > 1) {
+    return Math.round(number * 100) / 100;
+  }
+  else if (number == 0) {
+    return 0;
+  }
+  else {
+    const pos = Math.floor(Math.log10(Math.abs(number))) * -1 + 1;
+    return Math.floor(number * Math.pow(10, pos)) / Math.pow(10, pos);
+  }
+}
+
+

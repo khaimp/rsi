@@ -125,32 +125,48 @@
         {{ item.rsi_2h }}
       </span>
     </template>
+
     <template v-slot:[`item.percent_change_1h`]="{ item }">
-      <span :class="getPersonChangeColor(item.percent_change_1h)">
-        {{ item.percent_change_1h }}
+      <span
+        :class="getPersonChangeColor(item.percent_change_1h)"
+        class="d-flex flex-wrap flex-grow-1 justify-center"
+      >
+        {{ `${getRealValue(item.percent_change_1h)}%` }}
       </span>
     </template>
     <template v-slot:[`item.percent_change_2h`]="{ item }">
-      <span :class="getPersonChangeColor(item.percent_change_2h)">
-        {{ item.percent_change_2h }}
+      <span
+        :class="getPersonChangeColor(item.percent_change_2h)"
+        class="d-flex flex-wrap flex-grow-1 justify-center"
+      >
+        {{ `${getRealValue(item.percent_change_2h)}%` }}
       </span>
     </template>
 
     <template v-slot:[`item.percent_change_24h`]="{ item }">
-      <span :class="getPersonChangeColor(item.percent_change_24h)">
-        {{ item.percent_change_24h }}
+      <span
+        :class="getPersonChangeColor(item.percent_change_24h)"
+        class="d-flex flex-wrap flex-grow-1 justify-center"
+      >
+        {{ `${getRealValue(item.percent_change_24h)}%` }}
       </span>
     </template>
     <template v-slot:[`item.percent_change_7d`]="{ item }">
-      <span :class="getPersonChangeColor(item.percent_change_7d)">
-        {{ item.percent_change_7d }}
+      <span
+        :class="getPersonChangeColor(item.percent_change_7d)"
+        class="d-flex flex-wrap flex-grow-1 justify-center"
+      >
+        {{ `${getRealValue(item.percent_change_7d)}%` }}
       </span>
     </template>
 
     <!-- eslint-disable-next-line -->
     <template v-slot:item.percent_change_30d="{ item }">
-      <span :class="getPersonChangeColor(item.percent_change_30d)">
-        {{ item.percent_change_30d }}
+      <span
+        :class="getPersonChangeColor(item.percent_change_30d)"
+        class="d-flex flex-wrap flex-grow-1 justify-center"
+      >
+        {{ `${getRealValue(item.percent_change_30d)}%` }}
       </span>
     </template>
   </v-data-table>
@@ -162,17 +178,19 @@ import {
   getSrc,
   getPersonChangeColor,
   getRsiColor,
-  flooNumber,
+  getRealValue,
   debounce,
+  flooNumber,
 } from "@/views/function";
 import JsonSearch from "search-array";
 export default {
   data: () => ({
     getStatus,
     getSrc,
-    flooNumber,
+    getRealValue,
     getRsiColor,
     getPersonChangeColor,
+    flooNumber,
     headers: [
       {
         text: "",
@@ -182,7 +200,7 @@ export default {
       },
       {
         text: "1-500",
-        align: "center",
+        align: "start",
         sortable: false,
         value: "rank",
         width: "70px",
@@ -195,11 +213,11 @@ export default {
       { text: "RSI1H", value: "rsi_1h", align: "end" },
       { text: "RSI2H", value: "rsi_2h", align: "end" },
 
-      { text: "1H%", value: "percent_change_1h", align: "end" },
-      { text: "2H%", value: "percent_change_2h", align: "end" },
-      { text: "1D%", value: "percent_change_24h", align: "end" },
-      { text: "1W%", value: "percent_change_7d", align: "end" },
-      { text: "30D%", value: "percent_change_30d", align: "end" },
+      { text: "1H%", value: "percent_change_1h", align: "center" },
+      { text: "2H%", value: "percent_change_2h", align: "center" },
+      { text: "1D%", value: "percent_change_24h", align: "center" },
+      { text: "1W%", value: "percent_change_7d", align: "center" },
+      { text: "30D%", value: "percent_change_30d", align: "center" },
     ],
     pagination: {
       page: 1,
