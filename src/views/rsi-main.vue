@@ -340,4 +340,8 @@ export default {
 .color-favorite {
   color: #ff9800;
 }
+
+.theme--dark.v-data-table > .v-data-table__wrapper > table > thead > tr > th {
+  color: white;
+}
 </style>
